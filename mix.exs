@@ -21,6 +21,7 @@ defmodule Enbot.Mixfile do
   defp deps do
      [
        {:nadia, "~> 0.3"},
+       {:credo, "~> 0.4", only: [:dev, :test]},
      ]
   end
 end
