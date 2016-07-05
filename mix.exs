@@ -13,15 +13,21 @@ defmodule Enbot.Mixfile do
   # Type "mix help compile.app" for information
   def application do
     [
-      applications: [:logger, :nadia],
+      applications: [
+        :logger,
+        :nadia,
+        :httpoison,
+      ],
     ]
   end
 
   # Type "mix help deps" for examples and options
   defp deps do
-     [
-       {:nadia, "~> 0.3"},
-       {:credo, "~> 0.4", only: [:dev, :test]},
-     ]
+    [
+      {:nadia, "~> 0.4"},
+      {:credo, "~> 0.4", only: [:dev, :test]},
+      {:httpoison, "~> 0.9"},
+      {:floki, "~> 0.9"},
+    ]
   end
 end
