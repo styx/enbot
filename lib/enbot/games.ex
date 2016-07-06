@@ -8,8 +8,7 @@ defmodule Enbot.Games do
 
   defp fetch_table(type, page) do
     fetch_page(type, page)
-    |> Floki.find(".table_light tr")
-    |> Stream.drop(1)
+    |> Floki.find(".table_light .infoRow")
     |> Enum.filter(&by_zone?/1)
   end
 
