@@ -3,6 +3,8 @@ defmodule Enbot.Formatter do
   Converts Floki html to readable stuff
   """
 
+  @byn_byr_limit 10_000
+
   def convert(html) do
     [_flag, _number, _timer, date, link, _authors, fee] =
       html
@@ -41,7 +43,7 @@ defmodule Enbot.Formatter do
       |> Floki.text
       |> Integer.parse
 
-    int = if int > 10000, do: int / 10000, else: int
+    int = if int > @byn_byr_limit, do: int / @byn_byr_limit, else: int
 
     "#{int}#{label}"
   end

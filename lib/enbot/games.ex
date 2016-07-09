@@ -1,4 +1,9 @@
 defmodule Enbot.Games do
+  @moduledoc """
+  Fetches the games list for Real and Points
+  filtered by Belarus (for now at least)
+  """
+
   @url "http://minsk.en.cx/GameCalendar.aspx?status=Coming&zone="
 
   def fetch_games(page) do
@@ -7,7 +12,8 @@ defmodule Enbot.Games do
   end
 
   defp fetch_table(type, page) do
-    fetch_page(type, page)
+    type
+    |> fetch_page(page)
     |> Floki.find(".table_light .infoRow")
     |> Enum.filter(&by_zone?/1)
   end
