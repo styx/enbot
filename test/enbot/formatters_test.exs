@@ -1,6 +1,6 @@
 defmodule Enbot.FormattersTest do
   use ExUnit.Case
-  doctest Enbot
+  doctest Enbot.Formatter
 
   test "convert" do
     formatted_game =
