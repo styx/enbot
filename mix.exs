@@ -18,6 +18,7 @@ defmodule Enbot.Mixfile do
         :nadia,
         :httpoison,
       ],
+      mod: {Enbot, []},
     ]
   end
 

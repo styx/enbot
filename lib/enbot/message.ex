@@ -1,6 +1,4 @@
 defmodule Enbot.Message do
-  alias Nadia.Model
-
   @moduledoc """
   Helpers to prepare messages for answering
   """
