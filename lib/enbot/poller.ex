@@ -18,10 +18,13 @@ defmodule Enbot.Poller do
     messages = Message.compact(updates)
 
     messages
-    |> inspect
-    |> Logger.info()
+    |> Enum.each(&reply/1)
 
-    Process.sleep(2000)
+    Process.sleep(1000)
     do_poll(new_offset)
+  end
+
+  defp reply(message) do
+    Task.start(Enbot.Responder, :reply, [message])
   end
 end
