@@ -15,10 +15,14 @@ defmodule Enbot.Actions do
   end
 
   def fetch_games do
-    # (Games.fetch_games(1) ++
-    # Games.fetch_games(2) ++
-    # Games.fetch_games(3))
-    Games.fetch_games(1)
-    |> Enum.map(&Formatter.convert/1)
+    games =
+      Games.fetch_games(1) ++
+      Games.fetch_games(2) ++
+      Games.fetch_games(3)
+
+    games
+    |> Stream.map(&Formatter.convert/1)
+    |> Enum.sort_by(fn({date, _}) -> date |> Timex.to_unix end)
+    |> Enum.map(fn({_, text}) -> text end)
   end
 end

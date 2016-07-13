@@ -1,5 +1,5 @@
 defmodule Fixtures do
-  @domain "bobr.en.cx"
+  @domain "bobr"
   @html_game_row [{"tr",
           [{"id", "ctl18_ctl00_GamesRepeater_ctl15_trItem"}, {"class", "infoRow"}],
           [{"td", [{"align", "center"}, {"nowrap", "nowrap"}, {"class", "infoCell"}],
@@ -54,8 +54,8 @@ defmodule Fixtures do
         ]
 
   @formatted_game """
-                  #{@domain} <a href=\"http://bobr.en.cx/GameDetails.aspx?gid=55744\">ЦвеТочки</a>
-                  [16 июля 2016 г. 18:00:00] - 15 бел. руб.
+                  <strong>#{@domain}</strong> <a href=\"http://bobr.en.cx/GameDetails.aspx?gid=55744\">ЦвеТочки</a> [16.07.2016/18:00]
+                  15 бел. руб.\n
                   """
   @messages [%Nadia.Model.Update{chosen_inline_result: nil, inline_query: nil,
   message: %Nadia.Model.Message{audio: nil, caption: nil,

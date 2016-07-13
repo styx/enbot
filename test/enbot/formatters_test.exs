@@ -3,7 +3,7 @@ defmodule Enbot.FormattersTest do
   doctest Enbot.Formatter
 
   test "convert" do
-    formatted_game =
+    {_, formatted_game} =
       Fixtures.html_game_row
       |> Enbot.Formatter.convert
     assert formatted_game == Fixtures.formatted_game

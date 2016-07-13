@@ -17,6 +17,7 @@ defmodule Enbot.Mixfile do
         :logger,
         :nadia,
         :httpoison,
+        :timex,
       ],
       mod: {Enbot, []},
     ]
@@ -29,6 +30,7 @@ defmodule Enbot.Mixfile do
       {:credo, "~> 0.4", only: [:dev, :test]},
       {:httpoison, "~> 0.9"},
       {:floki, "~> 0.9"},
+      {:timex, "~> 3.0"},
     ]
   end
 end
