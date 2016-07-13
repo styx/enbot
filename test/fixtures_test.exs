@@ -54,7 +54,7 @@ defmodule Fixtures do
         ]
 
   @formatted_game """
-                  <strong>#{@domain}</strong> <a href=\"http://bobr.en.cx/GameDetails.aspx?gid=55744\">ЦвеТочки</a> [16.07.2016/18:00]
+                  <strong>#{@domain}</strong> <a href=\"http://bobr.en.cx/GameDetails.aspx?gid=55744\">ЦвеТочки</a> [16.07.2016 / 18:00]
                   15 бел. руб.\n
                   """
   @messages [%Nadia.Model.Update{chosen_inline_result: nil, inline_query: nil,

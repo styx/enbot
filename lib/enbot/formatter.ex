@@ -36,7 +36,7 @@ defmodule Enbot.Formatter do
   defp get_date(utc_date) do
     utc_date
     |> Timex.Timezone.convert("Europe/Minsk")
-    |> Timex.format!("{0D}.{0M}.{YYYY}/{h24}:{0m}")
+    |> Timex.format!("{0D}.{0M}.{YYYY} / {h24}:{0m}")
   end
 
   defp get_utc_date(html) do
