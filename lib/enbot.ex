@@ -10,6 +10,7 @@ defmodule Enbot do
     import Supervisor.Spec
 
     children = [
+      worker(Task, [&Enbot.Poller.poll/0], restart: :permanent),
       supervisor(Task.Supervisor, [[name: __MODULE__.TaskSupervisor, restart: :permanent]]),
     ]
     opts = [name: __MODULE__.Supervisor, strategy: :one_for_one]
@@ -17,8 +18,9 @@ defmodule Enbot do
     Logger.info "Starting main Supervisor ..."
     {:ok, spid} = Supervisor.start_link(children, opts)
 
-    Logger.info "Starting Poller ..."
-    Task.Supervisor.start_child(__MODULE__.TaskSupervisor, Enbot.Poller, :poll, [])
+    # Logger.info "Starting Poller ..."
+    # Enbot.Poller.poll
+    # Task.Supervisor.start_child(__MODULE__.TaskSupervisor, Enbot.Poller, :poll, [])
 
     Logger.info "Init finished!"
     {:ok, spid}
