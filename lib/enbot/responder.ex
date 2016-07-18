@@ -25,9 +25,9 @@ defmodule Enbot.Responder do
     case text do
       "/games" ->
         Actions.fetch_games
-      "/естькакиеигры" ->
-        Actions.fetch_games
       "/help" ->
+        Actions.help
+      "/start" ->
         Actions.help
       _ ->
         nil
