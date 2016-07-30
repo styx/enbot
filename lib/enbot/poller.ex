@@ -14,15 +14,27 @@ defmodule Enbot.Poller do
   end
 
   defp do_poll(offset) do
-    {:ok, updates} = Nadia.get_updates([offset: offset])
-    new_offset = Message.get_last_update_id(updates) + 1
-    messages = Message.compact(updates)
-
-    messages
-    |> Enum.each(&reply/1)
+    new_offset =
+      case Nadia.get_updates([offset: offset]) do
+        {:ok, updates} ->
+          process_updates(updates)
+        {:error, error} ->
+          error |> inspect |> Logger.error
+          Process.sleep(5000)
+          offset
+      end
 
     Process.sleep(1000)
     do_poll(new_offset)
+  end
+
+  defp process_updates(updates) do
+    new_offset = Message.get_last_update_id(updates) + 1
+
+    Message.compact(updates)
+    |> Enum.each(&reply/1)
+
+    new_offset
   end
 
   defp reply(message) do
