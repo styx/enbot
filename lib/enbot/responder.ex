@@ -28,6 +28,7 @@ defmodule Enbot.Responder do
   def reply(_), do: nil
 
   defp perform([message], "private"), do: process_message(message)
+  defp perform([message], "group"), do: process_message(message)
   defp perform([text, chat], "group") do
     if chat == @bot_name do
       process_message(text)
