@@ -18,10 +18,6 @@ defmodule Enbot do
     Logger.info "Starting main Supervisor ..."
     {:ok, spid} = Supervisor.start_link(children, opts)
 
-    # Logger.info "Starting Poller ..."
-    # Enbot.Poller.poll
-    # Task.Supervisor.start_child(__MODULE__.TaskSupervisor, Enbot.Poller, :poll, [])
-
     Logger.info "Init finished!"
     {:ok, spid}
   end

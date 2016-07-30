@@ -9,6 +9,7 @@ defmodule Enbot.Poller do
   """
 
   def poll do
+    Logger.info "Starting Poller ..."
     do_poll(0)
   end
 
@@ -25,6 +26,11 @@ defmodule Enbot.Poller do
   end
 
   defp reply(message) do
+    if Mix.env == :dev do
+      message
+      |> inspect
+      |> Logger.info
+    end
     Task.start(Enbot.Responder, :reply, [message])
   end
 end
